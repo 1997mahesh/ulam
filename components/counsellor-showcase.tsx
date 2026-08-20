@@ -1,0 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
+import { CalendarDays, CheckCircle2, LockKeyhole, UserRound } from "lucide-react";
+
+export type ShowcaseCounsellor = { id:string;slug:string;name:string;designation:string;photo:string|null;qualifications:string|null;experienceYears:number;languages:string[];specializations:string[];shortBio:string|null };
+
+export function Counsellorshowcase({counsellor,compact=false}:{counsellor:ShowcaseCounsellor;compact?:boolean}) {
+  const details=[counsellor.qualifications,counsellor.experienceYears>0?`${counsellor.experienceYears}+ Years of Experience`:null,...counsellor.specializations,counsellor.languages.length?`Languages: ${counsellor.languages.join(", ")}`:null].filter(Boolean).slice(0,compact?4:5) as string[];
+  return <article className={`booking-card counsellor-showcase${compact?" compact":""}`}><div className="counsellor-panel"><h2>Meet Our Counsellor</h2><div className="counsellor-content"><div className="portrait">{counsellor.photo?<Image src={counsellor.photo} fill sizes="(max-width: 600px) 100vw, 180px" className="object-cover" alt={`${counsellor.name}, ${counsellor.designation}`}/>:<span className="portrait-fallback"><UserRound aria-hidden="true"/><span>Photo coming soon</span></span>}</div><div className="counsellor-info"><h3>{counsellor.name}</h3><p className="role">{counsellor.designation}</p>{details.length>0&&<ul>{details.map(detail=><li key={detail}><CheckCircle2 aria-hidden="true"/>{detail}</li>)}</ul>}{!details.length&&counsellor.shortBio&&<p className="showcase-bio">{counsellor.shortBio}</p>}<Link className="outline-button" href={`/counsellors/${counsellor.slug}`}>View Profile</Link></div></div></div><div className="book-panel"><h2>Book Your Consultation</h2><p>Choose a convenient date and time</p><span className="book-icon"><CalendarDays aria-hidden="true"/></span><Link href={`/book-consultation?counsellor=${encodeURIComponent(counsellor.slug)}`} className="book-slot">BOOK A SLOT</Link><div className="secure"><LockKeyhole aria-hidden="true"/> Secure <b>•</b> Private <b>•</b> Professional</div></div></article>;
+}

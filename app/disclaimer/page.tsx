@@ -1,0 +1,1 @@
+import { DetailPage } from "@/components/inner"; export default function Page(){return <DetailPage kind="Important information" title="Website disclaimer" intro="Information on this website is educational and does not replace professional medical or psychological advice, assessment or treatment."/>}

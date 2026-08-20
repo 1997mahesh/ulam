@@ -1,0 +1,2 @@
+import {redirect} from "next/navigation";import {getSession} from "@/lib/auth";import {LoginForm} from "./login-form";
+export default async function AdminLogin(){if(await getSession())redirect("/admin");return <main className="admin-login"><section><p className="eyebrow">Central administration</p><h1>Ulam Seyal Admin</h1><p>Sign in to manage bookings, Counsellors, services and website content.</p><LoginForm/></section></main>}

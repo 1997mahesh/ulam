@@ -1,0 +1,3 @@
+import {NextResponse} from "next/server";import {z} from "zod";import {prisma} from "@/lib/prisma";
+const schema=z.object({name:z.string().trim().min(2).max(100),email:z.string().email(),phone:z.string().max(20).optional(),subject:z.string().trim().min(2).max(150),message:z.string().trim().min(10).max(3000)});
+export async function POST(req:Request){try{const parsed=schema.safeParse(await req.json());if(!parsed.success)return NextResponse.json({error:"Please check the submitted information."},{status:400});await prisma.contactEnquiry.create({data:parsed.data});return NextResponse.json({success:true},{status:201})}catch{return NextResponse.json({error:"Unable to send your enquiry right now."},{status:500})}}

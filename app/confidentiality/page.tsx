@@ -1,0 +1,1 @@
+import { DetailPage } from "@/components/inner"; export default function Page(){return <DetailPage kind="Care standards" title="Privacy & confidentiality" intro="Confidentiality is foundational to psychological care. Your professional will explain its scope and applicable safety or legal limits."/>}

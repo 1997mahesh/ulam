@@ -1,0 +1,1 @@
+import {requireAdmin} from "@/lib/auth";import {AccountForm} from "./account-form";export default async function Account(){const a=await requireAdmin();return <section className="admin-page"><div className="admin-page-title"><div><p>Admin / Account</p><h1>Admin Account</h1></div></div><AccountForm name={a.name} email={a.email}/></section>}

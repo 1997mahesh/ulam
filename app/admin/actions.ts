@@ -1,0 +1,4 @@
+"use server";
+import {compare} from "bcryptjs";import {redirect} from "next/navigation";import {prisma} from "@/lib/prisma";import {createSession,destroySession,requireAdmin} from "@/lib/auth";
+export async function loginAction(_:unknown,formData:FormData){const email=String(formData.get("email")||"").trim().toLowerCase(),password=String(formData.get("password")||"");if(!email||!password)return{error:"Email and password are required."};const admin=await prisma.admin.findUnique({where:{email}});if(!admin||!await compare(password,admin.passwordHash))return{error:"Invalid email or password."};await prisma.admin.update({where:{id:admin.id},data:{lastLoginAt:new Date()}});await createSession({id:admin.id,email:admin.email,name:admin.name});redirect("/admin")}
+export async function logoutAction(){await requireAdmin();await destroySession();redirect("/admin/login")}

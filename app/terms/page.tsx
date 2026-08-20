@@ -1,0 +1,1 @@
+import { DetailPage } from "@/components/inner"; export default function Page(){return <DetailPage kind="Legal" title="Terms of use" intro="Website information is educational and does not establish a therapist–client or doctor–patient relationship."/>}

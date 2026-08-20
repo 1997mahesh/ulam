@@ -1,0 +1,1 @@
+import {ResourceForm} from "../resource-form";export default function New(){return <section className="admin-page"><div className="admin-page-title"><div><p>Admin / Resources / New</p><h1>Add Resource</h1></div></div><ResourceForm/></section>}

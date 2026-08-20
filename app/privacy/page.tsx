@@ -1,0 +1,1 @@
+import { DetailPage } from "@/components/inner"; export default function Page(){return <DetailPage kind="Legal" title="Privacy policy" intro="This demonstration site does not store form submissions. A reviewed privacy policy must be supplied before production launch."/>}
