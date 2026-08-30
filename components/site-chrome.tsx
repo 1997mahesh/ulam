@@ -1,2 +1,2 @@
-"use client";import {usePathname} from "next/navigation";import {Header} from "./header";import {Footer} from "./footer";import {WhatsAppButton} from "./whatsapp-button";import type {SiteSettings} from "@/lib/site-settings";
+"use client";import {usePathname} from "next/navigation";import {Header} from "./header";import {Footer} from "./footer";import {WhatsAppButton} from "./whatsapp-button";import type {SiteSettings} from "@/lib/site-settings-shared";
 export function SiteChrome({children,settings}:{children:React.ReactNode;settings:SiteSettings}){const admin=usePathname().startsWith("/admin");if(admin)return <>{children}</>;return <><Header settings={settings}/><main id="main">{children}</main><Footer settings={settings}/><WhatsAppButton settings={settings}/></>}

@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";import Link from "next/link";import {usePathname} from "next/navigation";import {useEffect,useState} from "react";import {CalendarDays,Mail,Menu,Phone,X} from "lucide-react";import {phoneHref,type SiteSettings} from "@/lib/site-settings";
+import Image from "next/image";import Link from "next/link";import {usePathname} from "next/navigation";import {useEffect,useState} from "react";import {CalendarDays,Mail,Menu,Phone,X} from "lucide-react";import {phoneHref,type SiteSettings} from "@/lib/site-settings-shared";
 const links=[["Home","/"],["About Us","/about"],["Services","/services"],["Mental Health Consultants","/counsellors"],["How It Works","/#how-it-works"],["Fees","/book-consultation"],["Contact Us","/contact"]];
 const socialDefinitions=[["Instagram","socialInstagram"],["LinkedIn","socialLinkedIn"],["YouTube","socialYouTube"],["Facebook","socialFacebook"],["X","socialX"]] as const;
 function SocialIcon({name}:{name:string}){return <span aria-hidden className="grid size-6 place-items-center text-[14px] font-extrabold">{name==="Instagram"?"◎":name==="LinkedIn"?"in":name==="YouTube"?"▶":name==="Facebook"?"f":"𝕏"}</span>}

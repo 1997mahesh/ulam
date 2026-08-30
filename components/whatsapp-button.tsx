@@ -1,4 +1,4 @@
-import type {SiteSettings} from "@/lib/site-settings";
+import type {SiteSettings} from "@/lib/site-settings-shared";
 
 const message = "Hi Ulam Seyal, I would like to know more about your counselling services.";
 

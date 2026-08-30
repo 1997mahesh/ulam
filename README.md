@@ -53,6 +53,15 @@ npm run lint
 npm run build
 ```
 
+## Supabase database connections
+
+Use separate connection strings for application traffic and Prisma CLI work:
+
+- `DATABASE_URL` is the serverless runtime URL. In Supabase, open **Connect**, select **Transaction pooler**, and use the shared-pooler URL on port `6543`. Append `pgbouncer=true&connection_limit=1&pool_timeout=10&sslmode=require` (using `&` instead of `?` if the copied URL already has query parameters).
+- `DIRECT_URL` is for migrations, introspection, and administrative Prisma commands. Prefer the direct database URL (`db.PROJECT_REF.supabase.co`) on port `5432`. If the machine running migrations cannot reach Supabase's IPv6 direct endpoint, use the **Session pooler** URL on port `5432` instead.
+
+Set both variables as server-only secrets. For Vercel, configure both Production and Preview environments and redeploy after changing them. Never prefix either variable with `NEXT_PUBLIC_`.
+
 ## Main routes
 
 - Public: `/`, `/about`, `/services`, `/counsellors`, `/resources`, `/contact`, `/book-consultation`
