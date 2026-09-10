@@ -8,7 +8,7 @@ const slides = [
   {
     image: "/img/hero.jpeg",
     alt: "Online video counselling session with doctor",
-    title: "Counselling Chennai Offers Online Counselling for Depression, Relationship Issues and others",
+    title: "Ulam Seyal Offers Online Counselling for Depression, Relationship Issues and others",
     subtitle: "Connect securely with experienced mental health consultants from the comfort of your home.",
     ctaText: "Know More",
     ctaLink: "/services",
