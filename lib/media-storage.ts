@@ -98,4 +98,45 @@ export async function uploadMediaImage(file: File) {
   };
 }
 
+const MAX_VIDEO_SIZE = 50 * 1024 * 1024;
+const videoFormats: Record<string, string> = {
+  "video/mp4": "mp4",
+  "video/webm": "webm",
+  "video/quicktime": "mov",
+  "video/x-matroska": "mkv",
+};
+
+export async function uploadGalleryMedia(file: File) {
+  if (file.size <= 0) throw new Error("Please select a file to upload.");
+  const isVideo = file.type.startsWith("video/");
+  if (isVideo) {
+    if (file.size > MAX_VIDEO_SIZE) throw new Error("Video must be 50 MB or smaller.");
+    const ext = videoFormats[file.type] || "mp4";
+    const bytes = Buffer.from(await file.arrayBuffer());
+    const objectPath = `gallery/${Date.now()}-${randomUUID().slice(0, 8)}.${ext}`;
+    await upload(COUNSELLORS_BUCKET, objectPath, bytes, file.type || "video/mp4");
+    return {
+      type: "VIDEO" as const,
+      url: getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).getPublicUrl(objectPath).data.publicUrl,
+    };
+  } else {
+    const { bytes, format } = await validateImage(file, "gallery item");
+    const objectPath = `gallery/${Date.now()}-${randomUUID().slice(0, 8)}.${format.ext}`;
+    await upload(COUNSELLORS_BUCKET, objectPath, bytes, format.mime);
+    return {
+      type: "IMAGE" as const,
+      url: getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).getPublicUrl(objectPath).data.publicUrl,
+    };
+  }
+}
+
+export async function deleteGalleryMedia(value: string | null | undefined) {
+  if (!value) return;
+  const objectPath = publicObjectPath(value);
+  if (!objectPath) return;
+  const { error } = await getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).remove([objectPath]);
+  if (error) throw new Error("Unable to remove stored media.");
+}
+
 export const deletePublicImage = deleteCounsellorImage;
+

@@ -85,6 +85,7 @@ model Service {
   image String?
   price Decimal? @db.Decimal(10, 2)
   durationMinutes Int @default(60)
+  category String?
   isActive Boolean @default(true)
   displayOrder Int @default(0)
   Counsellors Counsellorservice[]
@@ -247,4 +248,16 @@ model Media {
   size Int
   altText String?
   createdAt DateTime @default(now())
+}
+model GalleryItem {
+  id String @id @default(cuid())
+  title String?
+  caption String? @db.Text
+  type String @default("IMAGE")
+  url String
+  thumbnailUrl String?
+  displayOrder Int @default(0)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

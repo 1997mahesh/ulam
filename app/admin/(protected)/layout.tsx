@@ -1,3 +1,66 @@
-import Link from "next/link";import {requireAdmin} from "@/lib/auth";import {logoutAction} from "../actions";import {AdminToast} from "@/components/admin/admin-toast";import {AdminFormEnhancer} from "@/components/admin/form-enhancer";
-const nav=[["Dashboard","/admin"],["Bookings","/admin/bookings"],["Counsellors","/admin/counsellors"],["Services","/admin/services"],["Availability","/admin/availability"],["Enquiries","/admin/enquiries"],["Resources","/admin/resources"],["Testimonials","/admin/testimonials"],["FAQs","/admin/faqs"],["Homepage","/admin/homepage"],["Media","/admin/media"],["Website Settings","/admin/settings"],["Payment Settings","/admin/settings/payment"],["Admin Account","/admin/account"]];
-export default async function AdminLayout({children}:{children:React.ReactNode}){const admin=await requireAdmin();return <div className="admin-shell"><aside><Link className="admin-brand" href="/admin">Ulam Seyal<small>Administration</small></Link><nav>{nav.map(([x,h])=><Link href={h} key={x}>{x}</Link>)}</nav><form action={logoutAction}><button>Logout</button></form></aside><div className="admin-main"><header><div><b>{admin.name}</b><small>{admin.email}</small></div><Link href="/" target="_blank">View website ↗</Link></header>{children}<AdminToast/><AdminFormEnhancer/></div></div>}
+import Link from "next/link";
+import { requireAdmin } from "@/lib/auth";
+import { logoutAction } from "../actions";
+import { AdminToast } from "@/components/admin/admin-toast";
+import { AdminFormEnhancer } from "@/components/admin/form-enhancer";
+
+const nav = [
+  ["Dashboard", "/admin"],
+  ["Bookings", "/admin/bookings"],
+  ["Counsellors", "/admin/counsellors"],
+  ["Services", "/admin/services"],
+  ["Gallery", "/admin/gallery"],
+  ["Availability", "/admin/availability"],
+  ["Enquiries", "/admin/enquiries"],
+  ["Resources", "/admin/resources"],
+  ["Testimonials", "/admin/testimonials"],
+  ["FAQs", "/admin/faqs"],
+  ["Homepage", "/admin/homepage"],
+  ["Media", "/admin/media"],
+  ["Website Settings", "/admin/settings"],
+  ["Payment Settings", "/admin/settings/payment"],
+  ["Admin Account", "/admin/account"],
+];
+
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const admin = await requireAdmin();
+
+  return (
+    <div className="admin-shell">
+      <aside>
+        <Link className="admin-brand" href="/admin">
+          Ulam Seyal
+          <small>Administration</small>
+        </Link>
+        <nav>
+          {nav.map(([x, h]) => (
+            <Link href={h} key={x}>
+              {x}
+            </Link>
+          ))}
+        </nav>
+        <form action={logoutAction}>
+          <button>Logout</button>
+        </form>
+      </aside>
+      <div className="admin-main">
+        <header>
+          <div>
+            <b>{admin.name}</b>
+            <small>{admin.email}</small>
+          </div>
+          <Link className="admin-primary" href="/" target="_blank">
+            View website ↗
+          </Link>
+        </header>
+        {children}
+        <AdminToast />
+        <AdminFormEnhancer />
+      </div>
+    </div>
+  );
+}
