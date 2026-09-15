@@ -7,3 +7,62 @@ export async function saveAvailability(f:FormData){await requireAdmin();const se
 export async function saveSetting(f:FormData){await requireAdmin();for(const [key,value] of f.entries())if(key!=="$ACTION_ID"){const group=key.startsWith("social")?"social":["supportNumber","timezone","defaultDuration"].includes(key)?"booking":key.startsWith("meta")?"seo":"general";await prisma.siteSetting.upsert({where:{key},update:{value:String(value).trim(),group},create:{key,value:String(value).trim(),group}})}revalidatePath("/","layout");revalidatePath("/admin/settings");redirect("/admin/settings?notice=saved")}
 
 export async function savePaymentSettings(f:FormData){await requireAdmin();const keys=["paymentCurrency","paymentInstructions","upiPayeeName","upiId","bankAccountName","bankName","bankAccountNumber","bankIfsc","bankAccountType"],values:Record<string,string>=Object.fromEntries(keys.map(key=>[key,text(f,key)]));values.paymentsEnabled=f.get("paymentsEnabled")==="on"?"true":"false";values.upiEnabled=f.get("upiEnabled")==="on"?"true":"false";values.bankEnabled=f.get("bankEnabled")==="on"?"true":"false";const qr=f.get("upiQrImage");if(qr instanceof File&&qr.size>0)values.upiQrImage=await uploadPaymentQr(qr);for(const[key,value]of Object.entries(values))await prisma.siteSetting.upsert({where:{key},update:{value,group:"payment"},create:{key,value,group:"payment"}});revalidatePath("/payment","layout");revalidatePath("/admin/settings/payment");redirect("/admin/settings/payment?notice=saved")}
+
+export type ReferralFormState={error?:string}|null;
+export async function saveReferralService(_:ReferralFormState,f:FormData):Promise<ReferralFormState>{
+  await requireAdmin();
+  const id=text(f,"id"),name=text(f,"name"),slug=slugify(text(f,"slug")||name);
+  const current=id?await prisma.referralService.findUnique({where:{id}}):null;
+  if(id&&!current)return{error:"Referral service was not found."};
+  const file=f.get("photo"),removePhoto=text(f,"removePhoto")==="true";
+  let uploaded:string|null=null;
+  try{
+    if(file instanceof File&&file.size>0){
+      const {uploadReferralImage} = await import("@/lib/media-storage");
+      uploaded=await uploadReferralImage(file,slug);
+    }
+    const photo=uploaded||(removePhoto?null:current?.photo||null);
+    const data={
+      name,
+      slug,
+      designation:text(f,"designation"),
+      qualifications:text(f,"qualifications")||null,
+      department:text(f,"department")||null,
+      experience:text(f,"experience")||null,
+      shortBio:text(f,"shortBio")||null,
+      bio:text(f,"bio"),
+      photo,
+      areasOfFocus:text(f,"areasOfFocus").split(/\r?\n|,/).map(x=>x.trim()).filter(Boolean),
+      therapeuticModalities:text(f,"therapeuticModalities").split(/\r?\n|,/).map(x=>x.trim()).filter(Boolean),
+      hospitalAffiliation:text(f,"hospitalAffiliation")||null,
+      languages:text(f,"languages").split(",").map(x=>x.trim()).filter(Boolean),
+      consultationFee:text(f,"consultationFee")||null,
+      contactPhone:text(f,"contactPhone")||null,
+      contactEmail:text(f,"contactEmail")||null,
+      isActive:f.get("isActive")==="on",
+      displayOrder:Number(f.get("displayOrder"))||0
+    };
+    if(id){
+      await prisma.referralService.update({where:{id},data});
+    }else{
+      await prisma.referralService.create({data});
+    }
+    if(current?.photo&&current.photo!==photo){
+      const {deleteReferralImage} = await import("@/lib/media-storage");
+      const used=await prisma.referralService.count({where:{photo:current.photo}});
+      if(!used)await deleteReferralImage(current.photo);
+    }
+    revalidatePath("/");
+    revalidatePath("/referrals");
+    revalidatePath(`/referrals/${slug}`);
+    if(current?.slug&&current.slug!==slug)revalidatePath(`/referrals/${current.slug}`);
+  }catch(error){
+    if(uploaded){
+      const {deleteReferralImage} = await import("@/lib/media-storage");
+      await deleteReferralImage(uploaded);
+    }
+    return{error:error instanceof Error?error.message:"Unable to save referral service."};
+  }
+  redirect("/admin/referrals?notice=saved");
+}
+

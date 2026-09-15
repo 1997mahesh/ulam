@@ -37,6 +37,13 @@ export async function uploadCounsellorImage(file: File, counsellorSlug: string) 
   return getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).getPublicUrl(objectPath).data.publicUrl;
 }
 
+export async function uploadReferralImage(file: File, referralSlug: string) {
+  const { bytes, format } = await validateImage(file, "photo");
+  const objectPath = `referrals/${safeStem(referralSlug)}/${Date.now()}-${randomUUID().slice(0, 8)}-photo.${format.ext}`;
+  await upload(COUNSELLORS_BUCKET, objectPath, bytes, format.mime);
+  return getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).getPublicUrl(objectPath).data.publicUrl;
+}
+
 function publicObjectPath(value: string) {
   if (value.startsWith("/img/")) return null;
   try {
@@ -56,6 +63,9 @@ export async function deleteCounsellorImage(value: string | null | undefined) {
   const { error } = await getSupabaseServerClient().storage.from(COUNSELLORS_BUCKET).remove([objectPath]);
   if (error) throw new Error("Unable to remove the stored counsellor image.");
 }
+
+export const deleteReferralImage = deleteCounsellorImage;
+
 
 export async function uploadPaymentProof(file: File, bookingNumber: string) {
   const { bytes, format } = await validateImage(file, "payment proof");

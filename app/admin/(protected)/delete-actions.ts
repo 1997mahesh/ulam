@@ -13,4 +13,21 @@ export async function deleteTestimonial(_:DeleteState,f:FormData):Promise<Delete
 export async function deleteAvailability(_:DeleteState,f:FormData):Promise<DeleteState>{await requireAdmin();await prisma.availability.delete({where:{id:id(f)}});revalidatePath("/admin/availability");return{success:"Availability was deleted."}}
 export async function deleteMedia(_:DeleteState,f:FormData):Promise<DeleteState>{await requireAdmin();const m=await prisma.media.delete({where:{id:id(f)}});if(!m.url.startsWith("/uploads/"))await deletePublicImage(m.url);revalidatePath("/admin/media");return{success:"Media was deleted."}}
 export async function deleteGallery(_:DeleteState,f:FormData):Promise<DeleteState>{await requireAdmin();const recordId=id(f),item=await prisma.galleryItem.findUnique({where:{id:recordId}});if(!item)return{error:"Gallery item was not found."};await prisma.galleryItem.delete({where:{id:recordId}});if(item.url)await deleteGalleryMedia(item.url);revalidatePath("/admin/gallery");revalidatePath("/gallery");return{success:"Gallery item was deleted."}}
+export async function deleteReferralService(_:DeleteState,f:FormData):Promise<DeleteState>{
+  await requireAdmin();
+  const recordId=id(f),item=await prisma.referralService.findUnique({where:{id:recordId}});
+  if(!item)return{error:"Referral service was not found."};
+  await prisma.referralService.delete({where:{id:recordId}});
+  if(item.photo){
+    const {deleteReferralImage}=await import("@/lib/media-storage");
+    const used=await prisma.referralService.count({where:{photo:item.photo}});
+    if(!used)await deleteReferralImage(item.photo);
+  }
+  revalidatePath("/");
+  revalidatePath("/admin/referrals");
+  revalidatePath("/referrals");
+  revalidatePath(`/referrals/${item.slug}`);
+  return{success:`${item.name} was deleted.`};
+}
+
 

@@ -9,6 +9,7 @@ const nav = [
   ["Bookings", "/admin/bookings"],
   ["Counsellors", "/admin/counsellors"],
   ["Services", "/admin/services"],
+  ["Referrals Services", "/admin/referrals"],
   ["Gallery", "/admin/gallery"],
   ["Availability", "/admin/availability"],
   ["Enquiries", "/admin/enquiries"],

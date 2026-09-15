@@ -37,7 +37,7 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Our Senior Mental Health Consultants", href: "/counsellors" },
-  { label: "Referrals Services", href: "/services" },
+  { label: "Referrals Services", href: "/referrals" },
   { label: "Languages", href: "/languages" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact" },
@@ -110,6 +110,7 @@ export function Header({ settings }: { settings: SiteSettings }) {
   const isLinkActive = (item: NavItem) => {
     if (item.label === "Home") return pathname === "/";
     if (item.label === "Our Senior Mental Health Consultants") return pathname.startsWith("/counsellors") || pathname.startsWith("/specialists");
+    if (item.label === "Referrals Services") return pathname.startsWith("/referrals");
     if (item.children) {
       return (
         item.children.some(
