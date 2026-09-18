@@ -1,14 +1,16 @@
-import { Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { phoneHref, type SiteSettings } from "@/lib/site-settings-shared";
 
-const inquiryMessage = "Hi Ulam Seyal, I have an inquiry.";
+const enquiryMessage = "Hi Ulam Seyal, I have an enquiry.";
 const counselingMessage = "Hi Ulam Seyal, I would like to know more about your counselling services.";
 
 export function WhatsAppButton({ settings }: { settings: SiteSettings }) {
   const number = settings.supportNumber.replace(/\D/g, "");
-  const inquiryHref = `https://wa.me/${number}?text=${encodeURIComponent(inquiryMessage)}`;
+  const enquiryHref = `https://wa.me/${number}?text=${encodeURIComponent(enquiryMessage)}`;
   const counselingHref = `https://wa.me/${number}?text=${encodeURIComponent(counselingMessage)}`;
   const callHref = phoneHref(settings.phone || "+91 976 976 9521");
+  const email = settings.email || "care@ulamseyal.com";
+  const mailHref = `mailto:${email}`;
 
   return (
     <aside className="whatsapp-float-group" aria-label="Quick contact and chat options">
@@ -23,14 +25,14 @@ export function WhatsAppButton({ settings }: { settings: SiteSettings }) {
         <span className="call-btn-text">Call Us</span>
       </a>
 
-      {/* 2. Chat for INQUIRY (Middle) */}
+      {/* 2. Chat for ENQUIRY (Middle) */}
       <a
         className="whatsapp-pill-btn"
-        href={inquiryHref}
+        href={enquiryHref}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat for Inquiry on WhatsApp"
-        title="Chat for Inquiry"
+        aria-label="Chat for Enquiry on WhatsApp"
+        title="Chat for Enquiry"
       >
         <svg viewBox="0 0 32 32" aria-hidden="true" className="whatsapp-icon">
           <path
@@ -39,7 +41,7 @@ export function WhatsAppButton({ settings }: { settings: SiteSettings }) {
           />
         </svg>
         <span className="whatsapp-btn-text">
-          Chat for <span className="whatsapp-btn-highlight">INQUIRY</span>
+          Chat for <span className="whatsapp-btn-highlight">ENQUIRY</span>
         </span>
       </a>
 
@@ -62,6 +64,20 @@ export function WhatsAppButton({ settings }: { settings: SiteSettings }) {
           Chat for <span className="whatsapp-btn-highlight">COUNSELING</span>
         </span>
       </a>
+
+      {/* 4. Mail Us (Bottom-most) */}
+      <a
+        className="mail-pill-btn"
+        href={mailHref}
+        aria-label={`Mail us at ${email}`}
+        title={`Mail Us: ${email}`}
+      >
+        <Mail className="mail-icon" size={18} aria-hidden="true" />
+        <span className="mail-btn-text">
+          Mail Us: <span className="mail-btn-highlight">{email}</span>
+        </span>
+      </a>
     </aside>
   );
 }
+

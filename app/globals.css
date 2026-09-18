@@ -232,7 +232,8 @@ a {
 }
 
 .whatsapp-pill-btn,
-.call-pill-btn {
+.call-pill-btn,
+.mail-pill-btn {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -281,20 +282,23 @@ a {
   white-space: nowrap;
 }
 
-/* WhatsApp: Green buttons */
-.whatsapp-pill-btn {
+/* WhatsApp & Mail: Green buttons */
+.whatsapp-pill-btn,
+.mail-pill-btn {
   background-color: #0b8e28;
   color: #ffffff;
 }
 
-.whatsapp-pill-btn:hover {
+.whatsapp-pill-btn:hover,
+.mail-pill-btn:hover {
   background-color: #087a22;
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 6px 18px rgba(11, 142, 40, 0.35), 0 3px 6px rgba(0, 0, 0, 0.18);
   color: #ffffff;
 }
 
-.whatsapp-pill-btn:active {
+.whatsapp-pill-btn:active,
+.mail-pill-btn:active {
   transform: translateY(0) scale(0.98);
 }
 
@@ -305,7 +309,16 @@ a {
   fill: #ffffff;
 }
 
-.whatsapp-btn-text {
+.mail-pill-btn .mail-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  stroke: #ffffff;
+  fill: none;
+}
+
+.whatsapp-btn-text,
+.mail-btn-text {
   font-size: 14.5px;
   font-weight: 500;
   line-height: 1;
@@ -314,7 +327,8 @@ a {
   white-space: nowrap;
 }
 
-.whatsapp-btn-highlight {
+.whatsapp-btn-highlight,
+.mail-btn-highlight {
   font-weight: 700;
   letter-spacing: 0.2px;
 }
@@ -327,7 +341,8 @@ a {
   }
 
   .whatsapp-pill-btn,
-  .call-pill-btn {
+  .call-pill-btn,
+  .mail-pill-btn {
     padding: 7px 15px 7px 12px;
     gap: 8px;
   }
@@ -337,13 +352,15 @@ a {
     height: 20px;
   }
 
-  .call-pill-btn .call-icon {
+  .call-pill-btn .call-icon,
+  .mail-pill-btn .mail-icon {
     width: 18px;
     height: 18px;
   }
 
   .whatsapp-btn-text,
-  .call-btn-text {
+  .call-btn-text,
+  .mail-btn-text {
     font-size: 13px;
   }
 }

@@ -109,7 +109,7 @@ export function HeroSlider() {
       <div className="hero-ribbon-banner" role="banner" aria-label="Welcome message">
         <div className="hero-ribbon-content">
           <p className="hero-ribbon-text">
-            Everyone Has a Story. Every Story Deserves to Be{" "}
+            Everyone Have a Story. Every Story Deserves to Be{" "}
             <em className="hero-ribbon-emphasis">Heard, Understood, and Valued.</em>
           </p>
         </div>
