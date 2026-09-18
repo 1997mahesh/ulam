@@ -179,7 +179,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               </nav>
             </div>
 
-            <div className="footer-sub-section mt-6">
+            <div className="footer-sub-section">
               <h2 className="footer-col-title">Customer Support</h2>
               <nav className="footer-link-list">
                 {customerSupportLinks.map(([label, href]) => (
@@ -204,7 +204,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               </nav>
             </div>
 
-            <div className="footer-sub-section mt-6">
+            <div className="footer-sub-section">
               <h2 className="footer-col-title">Locate Us</h2>
               <div className="locate-us-block">
                 <h3 className="locate-branch-name">CHENNAI COUNSELLING CENTRE</h3>

@@ -1712,7 +1712,7 @@ a {
 .footer-col-stack {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .footer-sub-section {
