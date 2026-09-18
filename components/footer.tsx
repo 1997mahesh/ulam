@@ -207,7 +207,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
             <div className="footer-sub-section">
               <h2 className="footer-col-title">Locate Us</h2>
               <div className="locate-us-block">
-                <h3 className="locate-branch-name">CHENNAI COUNSELLING CENTRE</h3>
+                <h3 className="locate-branch-name">Ulam Seyal</h3>
                 <p className="locate-address">
                   Flat E, Rathnagardens, Guindy engineers colony, Thuraipakkam, Chennai 600097.
                 </p>
