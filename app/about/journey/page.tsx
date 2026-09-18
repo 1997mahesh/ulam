@@ -1,36 +1,45 @@
 import Link from "next/link";
 import { ArrowRight, Heart, Lightbulb, Shield, Users } from "lucide-react";
-import { PageHero } from "@/components/inner";
+import { AboutEditorialHero } from "@/components/about-editorial-hero";
 import { Button, SectionTitle } from "@/components/ui";
 
 export const metadata = {
   title: "Our Journey | Ulam Seyal",
-  description: "Explore the milestones and evolution of Ulam Seyal in psychological care, psycho-oncology, and mental wellness support.",
+  description:
+    "Explore the journey and milestones of Ulam Seyal in psychological care, psycho-oncology, and mental wellness support.",
 };
 
-const milestones = [
+const journeyMilestones = [
   {
+    year: "2026",
     phase: "Phase 01",
+    badge: "The Beginning",
     title: "The Founding Vision",
-    desc: "Ulam Seyal was established to bridge the gap between clinical psychological expertise and compassionate, accessible care for individuals seeking guidance without stigma.",
+    desc: "Ulam Seyal was founded with the intention of making quality psychological and psycho-oncology support more accessible through online and virtual platforms, removing stigma and barriers to professional care.",
     icon: Lightbulb,
   },
   {
+    year: "2026",
     phase: "Phase 02",
+    badge: "Specialised Oncology Support",
     title: "Pioneering Psycho-Oncology Care",
-    desc: "Recognizing that medical cancer treatment requires emotional accompaniment, we launched specialized psycho-oncology support for patients, survivors, and caregivers.",
+    desc: "Recognizing that medical cancer treatment requires vital emotional accompaniment, we established comprehensive psycho-oncological care for patients, survivors, and caregivers throughout their illness journey.",
     icon: Heart,
   },
   {
+    year: "2026",
     phase: "Phase 03",
-    title: "Expanding Online Consultations",
-    desc: "To reach clients across different cities and linguistic backgrounds, we introduced private, secure virtual consultation options with multilingual psychologists.",
+    badge: "Virtual Platform",
+    title: "Multilingual Online Accessibility",
+    desc: "To connect with individuals and families across different cities and linguistic backgrounds, we introduced secure online video consultations with multilingual mental health specialists.",
     icon: Users,
   },
   {
+    year: "2026",
     phase: "Phase 04",
-    title: "Holistic Integrative Wellness",
-    desc: "Today, we continue evolving with integrated care that encompasses psychotherapy, family counseling, child and adolescent guidance, and supportive therapies.",
+    badge: "Holistic Health",
+    title: "Integrative Emotional & Physical Wellbeing",
+    desc: "Advancing our holistic model of care by combining psychotherapy, family counselling, child and adolescent guidance, yoga therapeutic interventions, and physiotherapy rehabilitation.",
     icon: Shield,
   },
 ];
@@ -38,62 +47,106 @@ const milestones = [
 export default function JourneyPage() {
   return (
     <div className="about-page">
-      <PageHero
-        eyebrow="Our Journey"
-        breadcrumb="Our Journey"
-        breadcrumbParent={{ label: "About Us", href: "/about" }}
-        title="Growing Through Care & Compassion"
-        text="A look at the path we have traveled in making psychological support thoughtful, accessible, and grounded in human connection."
+      {/* Editorial Hero */}
+      <AboutEditorialHero
+        prefix="OUR"
+        title="JOURNEY"
+        eyebrow="OUR JOURNEY"
+        headline="A continuous journey of compassionate, accessible care."
+        statement="Ulam Seyal was founded with the intention of making quality psychological and psycho-oncology support more accessible through online and virtual platforms."
+        tagline="Ulam Seyal — Healing Minds. Restoring Hope. Inspiring Change."
+        badgeType="orbit"
       />
 
-      <section className="about-section">
-        <div className="container">
-          <SectionTitle eyebrow="Milestones" title="How our care has expanded and evolved." />
-          <div className="grid gap-8 md:grid-cols-2 mt-12">
-            {milestones.map((m) => {
+      {/* Featured Journey Beginning Card */}
+      <section className="about-section py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="bg-white border border-[#e2ece6] rounded-2xl p-8 sm:p-12 md:p-16 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <span className="text-xs uppercase font-bold tracking-widest text-[#0f4a3a] bg-[#eaf4ef] px-4 py-1.5 rounded-full border border-[#d2e4da]">
+                The Beginning
+              </span>
+              <span className="font-serif text-3xl md:text-4xl font-bold text-[#0f4a3a]">
+                2026
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#0f4a3a] mb-6 leading-snug">
+              Founded on the belief that care begins with being heard.
+            </h2>
+            <p className="text-base sm:text-lg text-[#334b43] leading-relaxed mb-6">
+              Ulam Seyal was founded with the intention of making quality psychological and psycho-oncology support more accessible through online and virtual platforms.
+            </p>
+            <p className="text-base sm:text-lg text-[#334b43] leading-relaxed">
+              We continue to expand our therapeutic horizons to ensure that anyone facing emotional distress, health crises, or relationship transitions can find empathetic, evidence-informed guidance from wherever they are.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Vertical Timeline / Milestones */}
+      <section className="about-section bg-[#f5f8f6] py-16 md:py-24 border-y border-[#e2ece6]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow mb-3">Milestones</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#1b2722] leading-snug">
+              Milestones along our path of clinical and human care.
+            </h2>
+          </div>
+
+          <div className="relative border-l-2 border-[#d2e4da] ml-4 sm:ml-8 md:ml-12 pl-6 sm:pl-10 space-y-12">
+            {journeyMilestones.map((m, idx) => {
               const Icon = m.icon;
               return (
-                <article key={m.title} className="card p-8 bg-[#fbfaf7] border border-[#e6eee9] rounded-xl flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#0f4a3a] bg-[#e6f0eb] px-3 py-1 rounded-full">
-                        {m.phase}
-                      </span>
-                      <Icon className="text-[#0f4a3a]" size={22} />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#1b2722] mb-3">{m.title}</h3>
-                    <p className="text-sm text-[#4a5c56] leading-relaxed">{m.desc}</p>
+                <div key={m.title} className="relative group">
+                  {/* Timeline Dot Indicator */}
+                  <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 size-8 sm:size-10 rounded-full bg-[#0f4a3a] text-white flex items-center justify-center font-mono text-xs font-bold ring-4 ring-white shadow-sm">
+                    {idx + 1}
                   </div>
-                </article>
+
+                  <div className="bg-white p-8 rounded-2xl border border-[#e2ece6] shadow-sm hover:shadow-md transition-all">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#0f4a3a] bg-[#e6f0eb] px-3 py-1 rounded-full">
+                          {m.phase}
+                        </span>
+                        <span className="text-xs text-[#4a5c56] font-medium">
+                          {m.badge}
+                        </span>
+                      </div>
+                      <span className="font-serif font-bold text-xl text-[#0f4a3a]">
+                        {m.year}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1b2722] mb-3">
+                      {m.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#4a5c56] leading-relaxed">
+                      {m.desc}
+                    </p>
+                  </div>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="about-section bg-[#f5f8f6] py-16">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="eyebrow">Looking Forward</p>
-            <h2 className="text-3xl font-bold text-[#1b2722] mt-2 mb-6">Continual Learning & Commitment</h2>
-            <p className="text-base text-[#4a5c56] leading-relaxed">
-              Every consultation teaches us something new about human resilience. As we move forward, our commitment remains steadfast: to foster a healthcare culture where every story is heard, understood, and valued with total confidentiality.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      {/* Final Action / Explore Links */}
       <section className="about-final">
-        <div className="container">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div>
-            <p className="eyebrow">Join Us</p>
-            <h2>Be part of a compassionate care experience.</h2>
-            <p>Schedule your session or talk with our team today.</p>
+            <p className="eyebrow">Explore Further</p>
+            <h2>Meet the professionals guiding our mission.</h2>
+            <p>Read about our leadership team and their dedicated clinical experience.</p>
           </div>
           <div className="about-final-actions">
             <Button href="/book-consultation">Book a Consultation</Button>
-            <Link className="about-secondary" href="/contact">
-              Contact Us <ArrowRight />
+            <Link className="about-secondary" href="/about/founders">
+              Our Founders <ArrowRight size={16} />
+            </Link>
+            <Link className="about-secondary" href="/about/mission">
+              Our Mission <ArrowRight size={16} />
             </Link>
           </div>
         </div>

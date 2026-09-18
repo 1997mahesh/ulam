@@ -19,8 +19,8 @@ const navItems: NavItem[] = [
     label: "About Ulam Seyal",
     href: "/about",
     children: [
-      { label: "Our Mission", href: "/about/mission-vision" },
-      { label: "Our Vision", href: "/about/mission-vision" },
+      { label: "Our Mission", href: "/about/mission" },
+      { label: "Our Vision", href: "/about/vision" },
       { label: "Our Story", href: "/about/story" },
       { label: "Our Journey", href: "/about/journey" },
       { label: "Our Founders", href: "/about/founders" },

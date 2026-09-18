@@ -58,18 +58,18 @@ export default function MissionVisionPage() {
         <div className="container vision-grid">
           <article className="vision-card">
             <span>01</span>
-            <p className="eyebrow">Our Vision</p>
-            <h2>A world where psychological support is recognized as a vital pillar of everyday wellbeing.</h2>
+            <p className="eyebrow">Vision</p>
+            <h2>To create a world where accessible, compassionate, and evidence-informed psychological care empowers individuals and families to achieve emotional well-being, resilience, and a meaningful quality of life.</h2>
             <p>
-              We envision a society where individuals, couples, and families seek mental health support early, openly, and without fear of judgment. Mental wellbeing should be accessible, respected, and seamlessly integrated into healthcare.
+              We envision accessible, compassionate, and evidence-informed psychological care that empowers individuals and families across all walks of life to achieve emotional well-being, resilience, and a meaningful quality of life.
             </p>
           </article>
           <article className="mission-card">
             <span>02</span>
-            <p className="eyebrow">Our Mission</p>
-            <h2>To make thoughtful, professional psychological care easier to access, understand, and trust.</h2>
+            <p className="eyebrow">Mission</p>
+            <h2>Ulam Seyal is committed to providing accessible, ethical, confidential, and client-centred psychological and psycho-oncology services through online and virtual platforms.</h2>
             <p>
-              Our mission is to deliver evidence-informed, compassionate psychological support while honoring the privacy, dignity, and lived experience of every person who walks through our doors.
+              We aim to support individuals, couples, families, children, adolescents, parents, cancer patients, survivors, caregivers, and families in navigating emotional, psychological, and life challenges with greater understanding, coping, and resilience.
             </p>
           </article>
         </div>

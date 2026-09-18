@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, Ear, HeartHandshake, Sparkles } from "lucide-react";
-import { PageHero } from "@/components/inner";
+import { AboutEditorialHero } from "@/components/about-editorial-hero";
 import { Button, SectionTitle } from "@/components/ui";
 
 export const metadata = {
   title: "Our Story | Ulam Seyal",
-  description: "The story, motivation, and founding spirit behind Ulam Seyal's psychological and psycho-oncology care platform.",
+  description:
+    "Where care begins with understanding. Learn the founding story, philosophy, and dedication of Ulam Seyal Psychological and Psycho-Oncology Services.",
 };
 
 const storyHighlights = [
@@ -15,7 +16,7 @@ const storyHighlights = [
     icon: Ear,
   },
   {
-    title: "Psycho-Oncology Focus",
+    title: "Specialised Psycho-Oncology Focus",
     desc: "Recognizing the profound emotional strain on cancer patients, survivors, and caregivers, we integrated specialized psycho-oncological care to provide emotional accompaniment alongside medical journeys.",
     icon: HeartHandshake,
   },
@@ -29,67 +30,78 @@ const storyHighlights = [
 export default function StoryPage() {
   return (
     <div className="about-page">
-      <PageHero
-        eyebrow="Our Story"
-        breadcrumb="Our Story"
-        breadcrumbParent={{ label: "About Us", href: "/about" }}
-        title="Care Begins With Being Heard"
-        text="How Ulam Seyal grew from a simple belief into a compassionate platform for mental wellbeing and psycho-oncology support."
+      {/* Editorial Hero */}
+      <AboutEditorialHero
+        prefix="OUR"
+        title="STORY"
+        eyebrow="OUR STORY"
+        headline="Where care begins with understanding."
+        statement="Ulam Seyal, founded in 2026, is a professional psychological and psycho-oncology service committed to making quality emotional and psychological support accessible through online and virtual platforms."
+        tagline="Ulam Seyal — Healing Minds. Restoring Hope. Inspiring Change."
+        badgeType="starburst"
       />
 
-      <section className="about-section about-story">
-        <div className="container about-story-grid">
-          <div>
-            <p className="eyebrow">The Origin</p>
-            <h2>Understanding the human behind the concern.</h2>
-            <div className="story-mark" aria-hidden="true">
-              <Ear />
-              <span>
-                Listen first.
-                <br />
-                Understand fully.
-              </span>
+      {/* Main Narrative Editorial Section */}
+      <section className="about-section about-story py-16 md:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="about-story-grid">
+            <div>
+              <p className="eyebrow">The Origin</p>
+              <h2>Understanding the human behind the concern.</h2>
+              <div className="story-mark" aria-hidden="true">
+                <Ear />
+                <span>
+                  Listen first.
+                  <br />
+                  Understand fully.
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="about-prose">
-            <p className="story-lead">
-              Ulam Seyal was founded with a clear, heartfelt purpose: to make psychological and psycho-oncological care feel approachable, unhurried, and deeply humane.
-            </p>
-            <p>
-              In Tamil and regional culture, the name <em>Ulam Seyal</em> evokes deep reflection and intentional inner action. For many people, acknowledging distress and seeking professional guidance can be daunting. Stigma, fear of judgment, or previous impersonal experiences often lead individuals to suffer in silence.
-            </p>
-            <p>
-              We wanted to build an alternative—a space where vulnerability is met with respect, where sessions feel like thoughtful, collaborative conversations, and where care is tailored to the individual rather than forced into rigid categories.
-            </p>
-            <p>
-              Over time, as we worked with clients navigating anxiety, relationship challenges, grief, and life-altering illnesses like cancer, our conviction grew stronger: when people feel truly heard, understood, and valued, meaningful healing begins.
-            </p>
+            <div className="about-prose">
+              <p className="story-lead">
+                Ulam Seyal, founded in 2026, is a professional psychological and psycho-oncology service committed to making quality emotional and psychological support accessible through online and virtual platforms.
+              </p>
+              <p>
+                We provide confidential, client-centred support for <strong>individuals, couples, families, children and adolescents, and parents</strong>, as well as specialised psycho-oncology services for <strong>cancer patients, survivors, caregivers, and family members</strong>.
+              </p>
+              <p>
+                Our services address a range of emotional, psychological, behavioural, and relationship concerns, while psycho-oncology care focuses on helping individuals and families cope with the psychological impact of cancer and its various stages.
+              </p>
+              <p>
+                Ulam Seyal follows an <strong>ethical, compassionate, and evidence-informed approach</strong>, creating a safe space for clients to understand their concerns, strengthen coping abilities, improve emotional well-being, and navigate challenging life and health experiences with greater resilience.
+              </p>
+              <p className="italic text-[#006d67] font-semibold text-lg border-t border-[#d8e6df] pt-5 mt-6">
+                Ulam Seyal — Healing Minds. Restoring Hope. Inspiring Change.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="about-section bg-[#f5f8f6] py-16">
-        <div className="container">
+      {/* Guiding Convictions */}
+      <section className="about-section bg-[#f5f8f6] py-16 md:py-24 border-y border-[#e2ece6]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle eyebrow="Guiding Convictions" title="What shaped our therapeutic philosophy." />
-          <div className="grid gap-8 md:grid-cols-3 mt-10">
+          <div className="grid gap-8 md:grid-cols-3 mt-12">
             {storyHighlights.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="bg-white p-8 rounded-xl border border-[#e2ece6] shadow-sm">
-                  <div className="size-12 rounded-lg bg-[#eaf2ee] text-[#0f4a3a] flex items-center justify-center mb-5">
+                <article key={item.title} className="bg-white p-8 rounded-2xl border border-[#e2ece6] shadow-sm hover:shadow-md transition-all">
+                  <div className="size-12 rounded-xl bg-[#eaf2ee] text-[#0f4a3a] flex items-center justify-center mb-6">
                     <Icon size={24} />
                   </div>
                   <h3 className="text-xl font-bold text-[#1b2722] mb-3">{item.title}</h3>
                   <p className="text-sm text-[#4a5c56] leading-relaxed">{item.desc}</p>
-                </div>
+                </article>
               );
             })}
           </div>
         </div>
       </section>
 
+      {/* Final Action / Explore Links */}
       <section className="about-final">
-        <div className="container">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <p className="eyebrow">Start your journey</p>
             <h2>Take the first step towards understanding and clarity.</h2>
@@ -97,8 +109,11 @@ export default function StoryPage() {
           </div>
           <div className="about-final-actions">
             <Button href="/book-consultation">Book a Consultation</Button>
-            <Link className="about-secondary" href="/services">
-              Explore Services <ArrowRight />
+            <Link className="about-secondary" href="/about/journey">
+              Our Journey <ArrowRight size={16} />
+            </Link>
+            <Link className="about-secondary" href="/about/founders">
+              Our Founders <ArrowRight size={16} />
             </Link>
           </div>
         </div>

@@ -54,14 +54,62 @@ export const programs = [
 ] as const;
 
 export const faqs = [
-  ["What happens during the first therapy session?", "Your first session is a conversation about what brings you in, what you hope may change, and whether the therapist feels like a good fit."],
-  ["How long does therapy take?", "There is no fixed timeline. It depends on your goals, context and preferred pace. Your therapist will review progress with you."],
-  ["Is therapy confidential?", "Privacy is central to care. Your therapist will explain confidentiality and its safety or legal limits before you begin."],
-  ["Can I choose my psychologist?", "Yes. You can browse profiles or ask our care team to help match you based on needs, preferences and availability."],
-  ["Is online therapy available?", "Yes. Online and in-person consultation options are available, depending on the specialist and type of care."],
-  ["Do I need therapy or psychiatry?", "Therapy focuses on psychological support; psychiatry includes medical evaluation. Our team can help identify a suitable starting point without diagnosing through the website."],
-  ["Can children attend therapy?", "Yes. Child therapy is age-appropriate and often includes collaboration with parents or caregivers."],
-  ["Can couples attend together?", "Yes. Couples therapy is designed for partners to explore interaction patterns and shared goals together."]
+  [
+    "What happens during my first session, and why do you meet with me directly first?",
+    "Your initial session is an intake consultation designed to understand your current concerns, background, and personal goals in a respectful, non-judgmental space. There is no pressure to share more than you feel ready to discuss. We meet with you directly rather than family members or third parties to establish direct trust, hear your personal perspective, protect privacy, and ensure your voice remains central to your care plan. (Note for Minors: For children and adolescents, parental/guardian involvement, consent, assent, and safeguarding protocols are carefully coordinated alongside the young person's care.)"
+  ],
+  [
+    "What can I expect during ongoing sessions, and what is my role in therapy?",
+    "Each session is a collaborative partnership guided by your goals. Therapy is dynamic—it goes beyond just 'venting' or receiving passive advice. Your therapist helps provide structure to explore thoughts, emotions, behaviors, and relationship dynamics. Your role involves showing up openly, reflecting on experiences, and actively practicing strategies and insights in your day-to-day life between sessions."
+  ],
+  [
+    "Do I need a diagnosed mental illness or a clearly defined problem to start therapy?",
+    "No. Seeking psychological support does not indicate the presence of a mental illness. Many clients engage in therapy for everyday stressors, grief, relationship difficulties, workplace burnout, major life transitions, or personal growth. You do not need a specific diagnosis; if you simply feel 'stuck' or overwhelmed, therapy provides a dedicated space to untangle your feelings and gain clarity."
+  ],
+  [
+    "How long does therapy take, and how will I know if it is actually working?",
+    "Duration varies based on individual needs—ranging from short-term, solution-focused support (a few weeks to months) to longer-term therapy for deeper self-exploration or chronic life stressors. Signs of progress include heightened self-awareness, improved emotional regulation, healthier communication, and a stronger ability to navigate challenges. We regularly review goals together to ensure sessions remain meaningful and effective."
+  ],
+  [
+    "Is everything discussed confidential, and can family members speak to my therapist?",
+    "Yes. Confidentiality is fundamental to our therapeutic relationship. What you share remains strictly private, subject to standard ethical and legal limits (such as immediate risk of harm to yourself or others, or mandated reporting requirements). For adult clients, information is not shared with family members without explicit consent. If family involvement is clinically beneficial, it is discussed and agreed upon with you beforehand."
+  ],
+  [
+    "What if I feel anxious, nervous, or worried about being judged?",
+    "Feeling nervous before starting therapy is entirely normal. Opening up to someone new can feel intimidating. Our psychologists are committed to providing a professional, compassionate, and non-judgmental environment. Your therapist will move at your pace, ensuring you feel grounded, respected, and in complete control of what you choose to share."
+  ],
+  [
+    "What is psycho-oncology, and how does it support individuals navigating cancer?",
+    "Psycho-oncology addresses the emotional, behavioral, and social challenges of a cancer diagnosis. It helps individuals process shock and anxiety, manage distress, improve communication with medical teams, and maintain quality of life across all stages of diagnosis and treatment."
+  ],
+  [
+    "How does therapy support caregivers, and can family sessions be arranged?",
+    "Caring for a loved one with chronic or life-limiting illness can cause significant physical and emotional strain. Caregiver support offers a space to manage burnout, chronic stress, role changes, and caregiver guilt, while establishing healthy coping mechanisms. Additionally, family sessions can be arranged to facilitate open communication, align expectations, resolve relationship strain, and help family members support each other through major health transitions."
+  ],
+  [
+    "What support is available for palliative care, end-of-life care, and bereavement?",
+    "Palliative and end-of-life psychological care focuses on comfort, dignity, emotional relief, and quality of life, supporting individuals and families through advanced illness, functional changes, and anticipatory grief alongside palliative medical teams. Bereavement support provides a compassionate space after loss. Counselling does not rush grief, but helps process painful emotions, honor memories, adapt to life changes, and rebuild a sense of meaning at your own pace."
+  ],
+  [
+    "Can Ulam Seyal replace my oncologist, palliative-care doctor, or medical team?",
+    "No. Psycho-oncology and psychological services complement medical and cancer care; they do not replace oncologists, palliative medicine specialists, surgical oncologists, radiation oncologists, physicians, chemotherapy, radiotherapy, or other medical treatment. Ulam Seyal does not provide medical oncology opinions or diagnostic assessments. Psychological support works alongside your existing healthcare providers to care for your emotional and mental well-being."
+  ],
+  [
+    "Does Ulam Seyal have a referral pathway for oncology, psychiatry, and other specialist care?",
+    "Yes. Ulam Seyal follows a referral-oriented and multidisciplinary approach when additional medical or specialist care is required. Psychologists generally do not prescribe psychiatric medication unless holding separate medical qualifications. Depending on your clinical needs, we facilitate referrals to medical, surgical, or radiation oncologists, psychiatrists, palliative-care specialists, and physicians. With appropriate client consent, we coordinate with your treating team to ensure psychological care is integrated with broader medical treatment."
+  ],
+  [
+    "Is psychological counselling a substitute for emergency medical or psychiatric care?",
+    "No. Psychological counselling is not an emergency service and cannot replace immediate medical or psychiatric intervention. CRITICAL SAFETY NOTICE: If you or someone else is at immediate risk of suicide, self-harm, serious harm, or experiencing a severe medical/mental health crisis, urgent local emergency medical assistance or emergency department care should be sought immediately without waiting for a scheduled session."
+  ],
+  [
+    "Is online psychological or psycho-oncology consultation suitable for everyone and every location?",
+    "Not always. While online consultations are convenient for many, suitability depends on presenting concerns, clinical severity, safety considerations, communication needs, and technical privacy setup. Furthermore, online care is subject to legal and jurisdictional rules. Clients may be asked for their physical location during sessions to confirm service eligibility and for emergency safety planning. If online care is not clinically appropriate, in-person assessment or external referral will be recommended."
+  ],
+  [
+    "How are privacy and emergency situations managed during online sessions?",
+    "Ulam Seyal employs secure digital tools and strict protocols to protect client privacy. Clients are encouraged to connect from a private, quiet space rather than a public environment. If an emergency arises during an online consultation, standard online care protocols dictate that urgent local emergency resources must be contacted immediately, as virtual sessions cannot substitute for emergency response teams."
+  ]
 ] as const;
 
 export const nav = [

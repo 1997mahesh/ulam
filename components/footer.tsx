@@ -57,7 +57,8 @@ const customerSupportLinks = [
   ["Terms and Conditions", "/terms"],
   ["Disclaimer", "/disclaimer"],
   ["Privacy Policy", "/privacy"],
-  ["Refund And Cancellation Policy", "/terms"],
+  ["Refund And Cancellation Policy", "/refund-cancellation-policy"],
+  ["Frequently Asked Questions", "/faqs"],
 ];
 
 const languageLinks = [

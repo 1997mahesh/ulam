@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, CalendarDays, CheckCircle2, Globe, GraduationCap, HeartHandshake, Layers, Sparkles } from "lucide-react";
-import { PageHero } from "@/components/inner";
+import { AboutEditorialHero } from "@/components/about-editorial-hero";
 import { Button, SectionTitle } from "@/components/ui";
 
 export const metadata = {
@@ -51,33 +51,42 @@ const founders = [
   },
   {
     name: "Mr. Gopalakrishnan D.S.",
-    role: "Head of Operations at ULAM SEYAL Psychological Well-being & Psycho-Oncology Services",
-    designation: "Senior Counsellor | Psychotherapist | MSW – Medical & Psychiatric Social Work",
-    qualification: "MSW – Medical & Psychiatric Social Work",
+    role: "Managing Head – Ulam Seyal Psychological Wellness & Psycho-Oncology Services",
+    designation: "Medical & Psychiatric Social Work Professional | Senior Counsellor | Psychotherapist | Crisis Intervention Specialist",
+    qualification: "Master of Social Work (MSW) in Medical & Psychiatric Social Work – University of Madras",
     experience: "10+ Years of Professional Experience",
     image: "/img/gopi.png",
     bio: [
-      "Mr. Gopalakrishnan D.S. is a seasoned mental health professional with over 10 years of experience in counselling, psychotherapy, psychosocial support, programme management, and team leadership. He has contributed to various Central and State Government mental health and psychosocial programmes, with experience in programme coordination, team supervision, and organisational management.",
-      "His areas of practice include child and adolescent counselling, premarital and marital counselling, couple and relationship therapy, divorce counselling, family counselling, and geriatric counselling. His approach focuses on strengthening emotional well-being, managing stress, improving interpersonal relationships, and supporting healthier family dynamics.",
+      "Gopalakrishnan D.S. is a Medical & Psychiatric Social Work Professional, Senior Counsellor, Psychotherapist, and Crisis Intervention Specialist with extensive experience across NGO programs, Central Government projects, and Tamil Nadu Government initiatives. He holds a Master of Social Work (MSW) in Medical & Psychiatric Social Work from the University of Madras.",
+      "He possesses strong leadership and management skills, with experience in leading and managing large teams, staff supervision, mentoring, task allocation, program coordination, performance monitoring, field-level management, and crisis case management.",
+      "He provides counselling support to children, adolescents, women, individuals, couples, families, and caregivers for concerns including anxiety, depression, stress, trauma, behavioral difficulties, relationship concerns, and emotional distresses. He has also conducted training and orientation programs on crisis intervention and crisis case handling, along with training on POCSO, child marriage, women and child protection, counselling, and social welfare interventions.",
+      "As a Manager with the Tamil Nadu Women Helpline 181 under the Social Welfare Department, he handled crisis intervention, case management, referral coordination, monitoring, documentation, reporting, and stakeholder coordination, supporting women and children facing vulnerable and emergency situations.",
+      "He has also worked as a Senior Counsellor with the Transgender community through HIV awareness programs and contributed to TB and community health programs through health education, sensitization, counselling, referrals, screening support, and follow-up activities. His professional contribution has been recognized with a Best Employee Award.",
+      "In 2026, Gopalakrishnan D.S. joined Ulam Seyal Psychological Wellness & Psycho-Oncology Services as Managing Head, taking responsibility for professional service management, team coordination, counselling services, program development, staff mentoring, quality monitoring, and overall operational coordination. He contributes to developing accessible and client-centered psychological wellness services for individuals, children, adolescents, women, families, and caregivers.",
     ],
     areasOfFocus: [
+      "Crisis Intervention & Emergency Case Handling",
       "Child & Adolescent Counselling",
-      "Premarital Counselling",
-      "Marital & Couple Therapy",
-      "Family & Relationship Counselling",
-      "Divorce Counselling",
-      "Geriatric Counselling",
-      "Stress Management",
-      "Emotional Well-being",
-      "Behavioural Concerns",
+      "Women & Child Protection (POCSO / Safety)",
+      "Anxiety, Depression & Stress",
+      "Trauma & Emotional Distress",
+      "Behavioral Difficulties",
+      "Relationship & Family Concerns",
+      "Marital & Premarital Counselling",
       "Caregiver Support",
+      "Vulnerable Community & Social Welfare Interventions",
     ],
     therapeuticModalities: [
-      "Psychosocial Counselling",
-      "Family Systems Therapy",
-      "Couples & Relationship Counselling",
-      "Behavioural Interventions",
-      "Supportive Psychotherapy",
+      "Cognitive Behavioral Therapy (CBT)",
+      "Rational Emotive Behavior Therapy (REBT)",
+      "Supportive Counselling",
+      "Solution-Focused Approaches",
+      "Family Counselling",
+      "Child-Centered Counselling",
+      "Adolescent Counselling",
+      "Marital & Premarital Counselling",
+      "Caregiver Support",
+      "Crisis Intervention & Case Management",
     ],
     languages: "Tamil | English",
   },
@@ -86,12 +95,14 @@ const founders = [
 export default function FoundersPage() {
   return (
     <div className="about-page">
-      <PageHero
-        eyebrow="Our Founders"
-        breadcrumb="Our Founders"
-        breadcrumbParent={{ label: "About Us", href: "/about" }}
-        title="Leadership Dedicated to Thoughtful Psychological Care"
-        text="Meet the visionary founders behind Ulam Seyal, uniting clinical excellence, compassionate listening, and evidence-informed mental health care."
+      <AboutEditorialHero
+        prefix="OUR"
+        title="FOUNDERS"
+        eyebrow="OUR FOUNDERS"
+        headline="The people behind Ulam Seyal."
+        statement="Meet the visionary founders behind Ulam Seyal, uniting clinical excellence, compassionate listening, and evidence-informed mental health care."
+        tagline="Ulam Seyal — Healing Minds. Restoring Hope. Inspiring Change."
+        badgeType="starburst"
       />
 
       {/* Main Founder Profiles Section */}
