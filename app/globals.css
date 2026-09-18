@@ -1810,7 +1810,7 @@ a {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .footer-main-layout {
     width: calc(100% - 32px);
     gap: 28px;
@@ -1837,6 +1837,55 @@ a {
 
   .footer-brand-box {
     max-width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Center alignment for mobile view */
+  .footer-col-counselling,
+  .footer-col-stack,
+  .footer-sub-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col-title {
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-link-list {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-link-list a {
+    text-align: center;
+  }
+
+  .locate-us-block {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .locate-branch-name {
+    text-align: center;
+  }
+
+  .locate-address {
+    text-align: center;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .locate-contacts {
+    align-items: center;
+    width: 100%;
+  }
+
+  .locate-contact-link {
+    justify-content: center;
   }
 }
 
