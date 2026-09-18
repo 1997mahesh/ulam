@@ -209,10 +209,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
               <div className="locate-us-block">
                 <h3 className="locate-branch-name">CHENNAI COUNSELLING CENTRE</h3>
                 <p className="locate-address">
-                  13, Basement Section, off Bazulla Road, Parthasarathi Puram, T. Nagar, Chennai, Tamil Nadu 600017.
-                </p>
-                <p className="locate-landmark">
-                  <span className="landmark-label">Landmark:</span> On the way from Jeeva Park.
+                  Flat E, Rathnagardens, Guindy engineers colony, Thuraipakkam, Chennai 600097.
                 </p>
                 <div className="locate-contacts">
                   <a href={phoneHref(settings.phone)} className="locate-contact-link">
