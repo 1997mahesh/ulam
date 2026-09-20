@@ -91,7 +91,7 @@ export function Footer({ settings }: { settings: SiteSettings }) {
         <div className="footer-disclaimer-content">
           <p>
             <span>
-              We are NOT a suicide prevention helpline. If you are feeling suicidal, we would suggest you immediately call up a suicide prevention helpline such as
+              Ulam Seyal is not a suicide prevention helpline. If you are in crisis or having suicidal thoughts, please contact:
             </span>
             <span className="disclaimer-line-break">
               Sneha Helpline:{" "}
