@@ -115,11 +115,12 @@ export function Footer({ settings }: { settings: SiteSettings }) {
         <div className="footer-brand-box">
           <div className="footer-brand-logo">
             <Image
-              src="/img/ulamseyallogo.png"
+              src="/img/ulamseyallogo.png?v=2"
               alt={settings.siteName}
               width={260}
               height={140}
               priority={false}
+              unoptimized
             />
           </div>
           <p className="footer-brand-tagline">{settings.tagline}</p>

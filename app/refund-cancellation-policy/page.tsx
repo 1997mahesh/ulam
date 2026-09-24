@@ -154,7 +154,11 @@ export default function RefundCancellationPolicyPage() {
             <div className="flex flex-wrap items-center gap-4 shrink-0">
               <a
                 href="mailto:care@ulamseyal.com"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0f4a3a] text-white text-xs font-bold hover:bg-[#0c3c2f] transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-bold transition-all shadow-sm hover:brightness-95"
+                style={{
+                  backgroundColor: "var(--color-yellow, #E9B12B)",
+                  color: "var(--color-charcoal, #2E2E2A)",
+                }}
               >
                 <Mail size={15} />
                 <span>Mail Us: care@ulamseyal.com</span>

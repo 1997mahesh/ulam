@@ -9,24 +9,25 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Languages We Support | Ulam Seyal",
-  description: "Explore multilingual psychological support at Ulam Seyal. Connect with therapists in English, Tamil, Hindi, and regional languages.",
+  description:
+    "Explore multilingual psychological support at Ulam Seyal. Connect with therapists in English, Tamil, Hindi, Telugu, Kannada, Malayalam, and Urdu.",
 };
+
+const supportedLanguages = [
+  "English",
+  "Tamil",
+  "Hindi",
+  "Telugu",
+  "Kannada",
+  "Malayalam",
+  "Urdu",
+];
 
 export default async function LanguagesPage() {
   const counsellors = await prisma.counsellor.findMany({
     where: { isActive: true },
     orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
   });
-
-  // Extract all unique languages
-  const languageSet = new Set<string>();
-  counsellors.forEach((c) => {
-    c.languages.forEach((lang) => languageSet.add(lang));
-  });
-  const allLanguages = Array.from(languageSet);
-  if (allLanguages.length === 0) {
-    allLanguages.push("English", "Tamil", "Hindi");
-  }
 
   return (
     <div className="about-page">
@@ -59,7 +60,7 @@ export default async function LanguagesPage() {
                 <h3 className="text-xl font-bold text-[#1b2722]">Supported Languages</h3>
               </div>
               <div className="flex flex-wrap gap-2.5">
-                {allLanguages.map((lang) => (
+                {supportedLanguages.map((lang) => (
                   <span
                     key={lang}
                     className="px-4 py-2 bg-white text-[#0f4a3a] border border-[#d0dfd7] font-semibold text-sm rounded-lg shadow-xs"
@@ -86,7 +87,7 @@ export default async function LanguagesPage() {
                   <div className="flex items-center gap-4 mb-4">
                     <div className="relative size-16 rounded-full overflow-hidden bg-[#e8f0ec] shrink-0">
                       {c.photo ? (
-                        <Image src={c.photo} alt={c.name} fill className="object-cover" />
+                        <Image src={c.photo} alt={c.name} fill sizes="64px" className="object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-[#0f4a3a]">
                           <UserRound size={28} />
@@ -119,9 +120,14 @@ export default async function LanguagesPage() {
                   </Link>
                   <Link
                     href={`/book-consultation?counsellor=${encodeURIComponent(c.slug)}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold bg-[#0f4a3a] text-white px-3 py-1.5 rounded-md"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg shadow-xs transition-colors hover:brightness-95"
+                    style={{
+                      backgroundColor: "var(--color-yellow, #E9B12B)",
+                      color: "var(--color-charcoal, #2E2E2A)",
+                    }}
                   >
-                    <CalendarDays size={13} /> Book Slot
+                    <CalendarDays size={14} />
+                    <span>Book Slot</span>
                   </Link>
                 </div>
               </article>
@@ -139,8 +145,8 @@ export default async function LanguagesPage() {
           </div>
           <div className="about-final-actions">
             <Button href="/book-consultation">Book a Consultation</Button>
-            <Link className="about-secondary" href="/contact">
-              Contact Team <ArrowRight />
+            <Link className="about-secondary" href="/counsellors">
+              Meet All Consultants <ArrowRight />
             </Link>
           </div>
         </div>

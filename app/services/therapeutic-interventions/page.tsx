@@ -1,21 +1,18 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Clock3, Sparkles, UserRound } from "lucide-react";
-import { PageHero } from "@/components/inner";
+import { ArrowRight, CalendarDays, Sparkles } from "lucide-react";
+import { Breadcrumb } from "@/components/ui";
+import { ServiceCard } from "@/components/service-card";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Therapeutic Interventions | Ulam Seyal",
-  description: "Evidence-based therapeutic modalities, psychological approaches, and structured intervention programs.",
+  description:
+    "Evidence-based therapeutic modalities, psychological approaches, and structured intervention programs.",
 };
 
 const CATEGORY_NAME = "Therapeutic Interventions";
-
-function serviceIcon(slug: string) {
-  if (slug.includes("couple") || slug.includes("family")) return UserRound;
-  return Sparkles;
-}
 
 export default async function TherapeuticInterventionsPage() {
   const rows = await prisma.service.findMany({
@@ -24,76 +21,92 @@ export default async function TherapeuticInterventionsPage() {
   });
 
   return (
-    <>
-      <PageHero
-        eyebrow="Service Category"
-        breadcrumb="Therapeutic Interventions"
-        breadcrumbParent={{ label: "Services", href: "/services" }}
-        title="Therapeutic Interventions"
-        text="Structured, scientifically backed therapeutic modalities customized to help address specific psychological patterns, emotional regulation, and cognitive growth."
-      />
-      <section className="services-page-section">
-        <div className="container">
-          <div className="services-page-intro">
-            <div>
-              <p className="eyebrow">Modalities & Approaches</p>
-              <h2>Targeted Clinical Interventions</h2>
-            </div>
-            <p>
-              Our practitioners employ integrated modalities including Cognitive Behavioral Therapy (CBT), Acceptance and Commitment approaches, mindfulness-based stress reduction, and systemic family therapies.
+    <div className="bg-[#fffdf9] min-h-screen">
+      {/* Header Section (Sample 1 Match) */}
+      <section className="border-b border-[#dce6e0] bg-[#fbf8f2] py-8 md:py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <Breadcrumb
+            current="Therapeutic Interventions"
+            parent={{ label: "Services", href: "/services" }}
+          />
+          <div className="text-center max-w-4xl mx-auto mt-2">
+            <p className="eyebrow mb-2">SERVICE CATEGORY</p>
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b3d30] tracking-tight mb-4">
+              Therapeutic Interventions
+            </h1>
+            <p className="text-sm sm:text-base text-[#4a5c56] leading-relaxed max-w-3xl mx-auto">
+              Structured, scientifically backed therapeutic modalities customized to help address specific psychological patterns, emotional regulation, and cognitive growth.
             </p>
           </div>
+        </div>
+      </section>
 
+      {/* 4-Column Service Grid (Sample 1 Match) */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {rows.length > 0 ? (
-            <div className="services-page-grid">
-              {rows.map((service, index) => {
-                const Icon = serviceIcon(service.slug);
-                return (
-                  <Link className="service-page-card" href={`/services/${service.slug}`} key={service.id}>
-                    <div className="service-card-top">
-                      <span className="service-card-icon">
-                        <Icon />
-                      </span>
-                      <span className="service-card-number">{String(index + 1).padStart(2, "0")}</span>
-                    </div>
-                    <p className="service-duration">
-                      <Clock3 />
-                      {service.durationMinutes} minutes
-                    </p>
-                    <h2>{service.name}</h2>
-                    <p className="service-description">{service.shortDescription}</p>
-                    <span className="service-explore">
-                      Explore service <ArrowUpRight />
-                    </span>
-                  </Link>
-                );
-              })}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {rows.map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
             </div>
           ) : (
-            <div className="bg-[#fbfaf7] border border-[#e2ece6] rounded-xl p-10 text-center max-w-xl mx-auto my-8">
+            <div className="bg-[#fbfaf7] border border-[#e2ece6] rounded-2xl p-10 text-center max-w-xl mx-auto my-8">
               <Sparkles className="mx-auto size-12 text-[#0f4a3a] mb-4 opacity-70" />
-              <h3 className="text-xl font-bold text-[#1b2722] mb-2">Services in this category</h3>
+              <h3 className="text-xl font-bold text-[#1b2722] mb-2">
+                Services in this category
+              </h3>
               <p className="text-sm text-[#4a5c56] mb-6">
                 Our consultants utilize a wide array of evidence-based interventions. Book an initial consultation to formulate your tailored care plan.
               </p>
-              <Link className="nav-cta inline-flex" href="/book-consultation">
-                Book a Consultation
+              <Link
+                className="nav-cta inline-flex items-center gap-2"
+                href="/book-consultation"
+                style={{
+                  backgroundColor: "var(--color-yellow, #E9B12B)",
+                  color: "var(--color-charcoal, #2E2E2A)",
+                }}
+              >
+                <CalendarDays size={16} />
+                <span>Book a Consultation</span>
               </Link>
             </div>
           )}
 
-          <div className="services-guidance">
+          {/* Bottom Guidance & Assistance Strip */}
+          <div className="mt-16 bg-white border border-[#dce6e0] rounded-2xl p-8 sm:p-10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <p className="eyebrow">Explore which therapy fits you best</p>
-              <h2>Individualized Therapy Planning</h2>
-              <p>Speak with our senior psychotherapists to identify the therapeutic approaches most aligned with your goals.</p>
+              <p className="eyebrow mb-1">INDIVIDUALIZED THERAPY PLANNING</p>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0b3d30] mb-2">
+                Explore which therapy fits you best.
+              </h3>
+              <p className="text-xs sm:text-sm text-[#52635c] max-w-2xl leading-relaxed">
+                Speak with our senior psychotherapists to identify the therapeutic approaches most aligned with your recovery and wellbeing goals.
+              </p>
             </div>
-            <Link href="/book-consultation">
-              Book a Consultation <ArrowRight />
-            </Link>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <Link
+                href="/book-consultation"
+                className="nav-cta"
+                style={{
+                  backgroundColor: "var(--color-yellow, #E9B12B)",
+                  color: "var(--color-charcoal, #2E2E2A)",
+                }}
+              >
+                <CalendarDays size={16} />
+                <span>Book a Consultation</span>
+              </Link>
+              <Link
+                href="/counsellors"
+                className="inline-flex items-center gap-1 text-xs font-bold text-[#0f4a3a] hover:underline px-3 py-2"
+              >
+                <span>Meet All Consultants</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

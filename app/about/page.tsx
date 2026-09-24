@@ -26,20 +26,13 @@ const subPages = [
   },
   {
     number: "03",
-    title: "Our Story",
-    href: "/about/story",
-    desc: "How Ulam Seyal was founded in 2026 to provide client-centred psychological and cancer emotional accompaniment.",
-    icon: Ear,
-  },
-  {
-    number: "04",
     title: "Our Journey",
     href: "/about/journey",
     desc: "The milestones, growth, and continuous commitment shaping our clinical practice and community support.",
     icon: Lightbulb,
   },
   {
-    number: "05",
+    number: "04",
     title: "Our Founders",
     href: "/about/founders",
     desc: "Meet our experienced clinical leadership uniting evidence-informed psychotherapy and oncology care.",

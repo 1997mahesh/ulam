@@ -21,7 +21,6 @@ const navItems: NavItem[] = [
     children: [
       { label: "Our Mission", href: "/about/mission" },
       { label: "Our Vision", href: "/about/vision" },
-      { label: "Our Story", href: "/about/story" },
       { label: "Our Journey", href: "/about/journey" },
       { label: "Our Founders", href: "/about/founders" },
     ],
@@ -161,7 +160,7 @@ export function Header({ settings }: { settings: SiteSettings }) {
       <header className="main-header">
         <div className="main-nav">
           <Link href="/" aria-label={`${settings.siteName} Home`} className="nav-logo-link">
-            <Image src="/img/ulam_logo.png" alt={settings.siteName} width={500} height={180} priority className="nav-logo" />
+            <Image src="/img/ulam_logo.png?v=2" alt={settings.siteName} width={500} height={180} priority unoptimized className="nav-logo" />
           </Link>
           <nav aria-label="Main navigation" className="nav-links-wrapper">
             {navItems.map((item) => {
@@ -226,7 +225,7 @@ export function Header({ settings }: { settings: SiteSettings }) {
       {mobile && (
         <div className="mobile-menu">
           <div>
-            <Image src="/img/ulam_logo.png" alt={settings.siteName} width={220} height={80} />
+            <Image src="/img/ulam_logo.png?v=2" alt={settings.siteName} width={220} height={80} unoptimized />
             <button onClick={() => setMobile(false)} aria-label="Close menu">
               <X />
             </button>

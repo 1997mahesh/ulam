@@ -110,13 +110,16 @@ a {
 }
 
 .btn-primary {
-  background: var(--green);
-  color: white;
-  border: 1px solid var(--green);
+  background: var(--color-yellow, #E9B12B);
+  color: var(--color-charcoal, #2E2E2A);
+  border: 1px solid var(--color-yellow, #E9B12B);
+  box-shadow: 0 6px 18px rgba(80, 65, 35, .1);
 }
 
 .btn-primary:hover {
-  background: #0f3b33;
+  background: var(--color-yellow-hover, #D9A01E);
+  border-color: var(--color-yellow-hover, #D9A01E);
+  color: var(--color-charcoal, #2E2E2A);
   transform: translateY(-2px);
 }
 
@@ -614,11 +617,20 @@ a {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  background: #0f4a3a;
-  color: #fff;
+  background: var(--color-yellow, #E9B12B);
+  color: var(--color-charcoal, #2E2E2A);
   border-radius: 6px;
   font-size: 13px;
-  font-weight: 700
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(80, 65, 35, .1);
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover,
+.book-slot:hover {
+  background: var(--color-yellow-hover, #D9A01E);
+  color: var(--color-charcoal, #2E2E2A);
+  transform: translateY(-2px);
 }
 
 .nav-cta {
@@ -877,7 +889,19 @@ a {
 .book-slot {
   width: 82%;
   height: 60px;
-  font: 700 24px Georgia, serif
+  font: 700 24px Georgia, serif;
+  background-color: var(--color-yellow, #E9B12B) !important;
+  color: var(--color-charcoal, #2E2E2A) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.book-slot:hover {
+  background-color: #D9A01E !important;
 }
 
 .secure {
