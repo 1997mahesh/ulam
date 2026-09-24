@@ -2,8 +2,10 @@ import Link from "next/link";
 import {
   ArrowRight,
   Brain,
+  Building2,
   CalendarDays,
   CheckCircle2,
+  FileCheck2,
   Heart,
   Headphones,
   HeartHandshake,
@@ -16,11 +18,12 @@ import {
   Users,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui";
+import { CertificateShowcase } from "@/components/certificate-showcase";
 
 export const metadata = {
   title: "Our Journey | Ulam Seyal Psychological & Psycho-Oncology Services",
   description:
-    "Explore the milestones, growth, and continuous commitment shaping the clinical practice and community support of Ulam Seyal.",
+    "Explore the milestones, growth, legal incorporation, and continuous commitment shaping the clinical practice and community support of Ulam Seyal.",
 };
 
 function OrnamentTitle({ children }: { children: React.ReactNode }) {
@@ -36,13 +39,15 @@ function OrnamentTitle({ children }: { children: React.ReactNode }) {
 const journeyPhases = [
   {
     phase: "01",
-    badge: "Founding Inception",
+    badge: "Founding Inception & Incorporation",
     year: "2026",
-    title: "The Founding Vision & Purpose",
-    desc: "Ulam Seyal was established on the fundamental belief that care begins with being heard, understood, and valued.",
+    title: "The Founding Vision & Legal Inception",
+    desc: "Ulam Seyal was established on the fundamental belief that care begins with being heard, understood, and valued, backed by complete statutory compliance.",
     icon: Lightbulb,
     points: [
       "Founded in 2026 to bridge crucial gaps in accessible and ethical psychological support.",
+      "Legally incorporated as ULAM SEYAL (OPC) PRIVATE LIMITED under the Ministry of Corporate Affairs, Govt. of India (CIN: U86900TN2026OPC197513).",
+      "Registered under Goods and Services Tax (GSTIN: 33AAECU2841E1ZO) ensuring transparent and accountable institutional operations.",
       "Formulated client-centred clinical protocols prioritising empathy, confidentiality, and trust.",
       "Designed a seamless virtual care framework removing geographic and transit barriers.",
     ],
@@ -139,7 +144,7 @@ export default function JourneyPage() {
                 The Story Behind Our Growth
               </span>
               <span className="text-xs font-mono font-semibold text-[#52635c]">
-                Established 2026
+                Established 2026 · Incorporated Entity
               </span>
             </div>
 
@@ -148,7 +153,7 @@ export default function JourneyPage() {
             </h2>
 
             <p className="text-sm sm:text-base text-[#4b4a45] leading-relaxed mb-8">
-              Founded in 2026, Ulam Seyal was built on the core conviction that every person facing emotional, health, or relationship challenges deserves a dedicated space to be heard, understood, and supported. From introducing virtual consultations to pioneering specialised psycho-oncology care, our journey is guided by clinical integrity and heartfelt empathy.
+              Founded in 2026, Ulam Seyal was built on the core conviction that every person facing emotional, health, or relationship challenges deserves a dedicated space to be heard, understood, and supported. Legally incorporated as <strong>ULAM SEYAL (OPC) PRIVATE LIMITED</strong> (CIN: <code className="text-xs font-bold text-[#0f4a3a] bg-[#eaf4ef] px-1.5 py-0.5 rounded">U86900TN2026OPC197513</code>) under the Ministry of Corporate Affairs and registered with GST, our journey is guided by institutional governance, clinical integrity, and heartfelt empathy.
             </p>
 
             <div className="border-t border-[#dce6e0] pt-6 flex flex-wrap items-center justify-between gap-4">
@@ -238,7 +243,26 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* Section 2: Guiding Commitments (Point to Point Cards) */}
+      {/* Section 2: Statutory Recognition & Legal Registrations (Incorporation & GST) */}
+      <section className="py-14 md:py-20 bg-[#fbf8f2] border-b border-[#dce6e0]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <OrnamentTitle>Statutory Certifications & Recognition</OrnamentTitle>
+            <p className="eyebrow mt-3 mb-2">OFFICIAL GOVERNMENT CREDENTIALS</p>
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b3d30]">
+              Legal Inception & Government Registrations
+            </h3>
+            <p className="text-sm sm:text-base text-[#52635c] mt-3 leading-relaxed">
+              Ulam Seyal is a legally incorporated Private Limited entity registered under the Ministry of Corporate Affairs, Government of India, and fully compliant with Goods & Services Tax (GST) regulations — ensuring the highest degree of transparency, clinical governance, and trust.
+            </p>
+          </div>
+
+          {/* Certificate Showcase Component */}
+          <CertificateShowcase />
+        </div>
+      </section>
+
+      {/* Section 3: Guiding Commitments (Point to Point Cards) */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -329,4 +353,5 @@ export default function JourneyPage() {
     </div>
   );
 }
+
 
