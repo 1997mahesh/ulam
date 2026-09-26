@@ -2599,6 +2599,11 @@ input[type="checkbox"] {
   white-space: nowrap
 }
 
+.admin-table-wrap th:last-child,
+.admin-table-wrap td:last-child {
+  text-align: right;
+}
+
 .admin-table-wrap td {
   padding: 13px;
   border-top: 1px solid var(--color-cream-deep);
@@ -3420,8 +3425,10 @@ select:disabled {
 .record-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 14px;
-  white-space: nowrap
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .record-actions>a,
@@ -5742,4 +5749,58 @@ select:disabled {
 
 .animate-spin-very-slow {
   animation: spin-very-slow 40s linear infinite;
+}
+
+/* Service Rich Prose Typography */
+.service-prose p,
+.prose-editor p {
+  margin-bottom: 0.85rem;
+  line-height: 1.7;
+}
+
+.service-prose strong,
+.service-prose b,
+.prose-editor strong,
+.prose-editor b {
+  color: #0b3d30;
+  font-weight: 700;
+}
+
+.service-prose h2,
+.prose-editor h2 {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0b3d30;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-prose h3,
+.prose-editor h3 {
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b3d30;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.service-prose ul,
+.prose-editor ul {
+  list-style-type: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.service-prose ol,
+.prose-editor ol {
+  list-style-type: decimal;
+  padding-left: 1.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.service-prose li,
+.prose-editor li {
+  margin-bottom: 0.35rem;
 }

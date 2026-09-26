@@ -16,6 +16,13 @@ export default async function EditReferralPage({
 
   if (!item) notFound();
 
+  const serializedItem = {
+    ...item,
+    consultationFee: item.consultationFee ? item.consultationFee.toString() : null,
+    createdAt: item.createdAt.toISOString(),
+    updatedAt: item.updatedAt.toISOString(),
+  };
+
   return (
     <section className="admin-page">
       <div className="admin-page-title">
@@ -24,7 +31,7 @@ export default async function EditReferralPage({
           <h1>Edit {item.name}</h1>
         </div>
       </div>
-      <ReferralForm referral={item} />
+      <ReferralForm referral={serializedItem} />
     </section>
   );
 }

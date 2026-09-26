@@ -2,17 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  ArrowRight,
   CalendarDays,
-  CheckCircle2,
   Clock3,
   HelpCircle,
   IndianRupee,
-  Lock,
   Monitor,
-  Phone,
-  ShieldCheck,
-  Sparkles,
   UserRound,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/ui";
@@ -38,6 +32,64 @@ export async function generateMetadata({
   };
 }
 
+function renderServiceDescription(
+  rawDesc?: string | null,
+  shortDesc?: string | null
+) {
+  const content =
+    rawDesc?.trim() ||
+    shortDesc?.trim() ||
+    "Compassionate, confidential care tailored to your individual needs.";
+
+  // Check if content contains HTML tags (e.g. <p>, <strong>, <b>, <ul>, etc.)
+  const hasHtml = /<[a-z][\s\S]*>/i.test(content);
+  if (hasHtml) {
+    return (
+      <div
+        className="service-prose space-y-4 text-sm sm:text-base text-[#334b43] leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    );
+  }
+
+  // Plain text fallback: split by paragraphs and auto-bold key prefixes
+  const paragraphs = content.split(/\n+/).filter(Boolean);
+
+  return (
+    <div className="space-y-4 text-sm sm:text-base text-[#334b43] leading-relaxed">
+      {paragraphs.map((para, idx) => {
+        const trimmed = para.trim();
+        const ideaMatch = trimmed.match(/^(?:1\.\s*)?The Idea\s*:\s*([\s\S]*)$/i);
+        const feelsMatch = trimmed.match(
+          /^(?:2\.\s*)?What it feels like\s*:\s*([\s\S]*)$/i
+        );
+
+        if (ideaMatch) {
+          return (
+            <p key={idx}>
+              <strong className="font-bold text-[#0b3d30]">The Idea:</strong>{" "}
+              {ideaMatch[1]}
+            </p>
+          );
+        }
+
+        if (feelsMatch) {
+          return (
+            <p key={idx}>
+              <strong className="font-bold text-[#0b3d30]">
+                What it feels like:
+              </strong>{" "}
+              {feelsMatch[1]}
+            </p>
+          );
+        }
+
+        return <p key={idx}>{trimmed}</p>;
+      })}
+    </div>
+  );
+}
+
 export default async function ServiceDetailPage({
   params,
 }: {
@@ -59,12 +111,7 @@ export default async function ServiceDetailPage({
   if (!item) notFound();
 
   const providers = item.Counsellors.map((link) => link.counsellor);
-  const basePrice = item.price ? Number(item.price) : 1850;
-
-  // Split description into meaningful paragraphs
-  const paragraphs = item.description
-    ? item.description.split(/\n+/).filter(Boolean)
-    : [item.shortDescription || "Compassionate, confidential care tailored to your individual needs."];
+  const basePrice = item.price ? Number(item.price) : 1699;
 
   // Thematic fallback image
   const serviceImage = item.image || "/img/hero-counselling-v2.png";
@@ -93,7 +140,7 @@ export default async function ServiceDetailPage({
             }
           />
 
-          {/* Centered Title & Tagline (Sample Image 2 Match) */}
+          {/* Centered Title & Tagline */}
           <div className="text-center max-w-4xl mx-auto mt-2">
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b3d30] tracking-tight mb-3">
               {item.name}
@@ -107,7 +154,7 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
-      {/* Main 2-Column Section (Sample Image 2 Match) */}
+      {/* Main 2-Column Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -141,27 +188,23 @@ export default async function ServiceDetailPage({
               </div>
             </div>
 
-            {/* Right Column: Detailed Text & Mode */}
+            {/* Right Column: Flowing Description Text & Mode */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="space-y-4 text-sm sm:text-base text-[#334b43] leading-relaxed">
-                {paragraphs.map((para, pIdx) => (
-                  <p key={pIdx}>{para}</p>
-                ))}
-              </div>
+              {renderServiceDescription(item.description, item.shortDescription)}
 
-              {/* Mode of Counselling Highlight (Sample Image 2 Match) */}
+              {/* Mode of Counselling Highlight */}
               <div className="pt-2">
                 <p className="text-sm sm:text-base font-bold text-[#0b3d30]">
                   Mode of Counselling:{" "}
                   <span className="font-normal text-[#4a5c56]">
-                    Both In-Person / Online Counselling (Secure Video & Audio)
+                    Both In-Person / Online Counselling (Secure Video &amp; Audio)
                   </span>
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Centered Large Booking Button (Sample Image 2 Match) */}
+          {/* Centered Large Booking Button */}
           <div className="my-12 text-center">
             <Link
               href={`/book-consultation?service=${encodeURIComponent(item.slug)}`}
@@ -175,7 +218,7 @@ export default async function ServiceDetailPage({
             </Link>
           </div>
 
-          {/* Bottom 2-Column Fee & FAQ Section (Sample Image 2 Match) */}
+          {/* Bottom 2-Column Fee & FAQ Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pt-10 border-t border-[#dce6e0]">
             {/* Left Column: Fee & Session Packages */}
             <div className="space-y-4 bg-white p-6 sm:p-8 rounded-2xl border border-[#dce6e0] shadow-xs">
@@ -190,13 +233,13 @@ export default async function ServiceDetailPage({
 
               <div className="space-y-2 text-sm sm:text-base text-[#334b43] pt-1">
                 <p>
-                  <strong>50 Min Session:</strong> Starting from ₹{basePrice.toLocaleString("en-IN")}/-
+                  <strong>50-minute session:</strong> Starting from ₹{basePrice.toLocaleString("en-IN")}/-
                 </p>
                 <p>
-                  <strong>1.5 Hrs Session:</strong> Starting from ₹{(basePrice + 1000).toLocaleString("en-IN")}/-
+                  <strong>100-minute session:</strong> Starting from ₹3,200/-
                 </p>
                 <p>
-                  <strong>2 Hrs Session:</strong> Starting from ₹{(basePrice + 2000).toLocaleString("en-IN")}/-
+                  <strong>150-minute session:</strong> Starting from ₹4,600/-
                 </p>
               </div>
 
